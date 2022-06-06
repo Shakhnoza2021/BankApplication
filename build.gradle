@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "org.gretty" version "3.0.7"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+    compileOnly 'org.apache.tomcat:tomcat-servlet-api:9.0.37'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation 'mysql:mysql-connector-java:8.0.22'
+
+    providedCompile group: 'javax.servlet', name: 'jsp-api', version: '2.0'
+    // https://mvnrepository.com/artifact/jstl/jstl
+    implementation group: 'jstl', name: 'jstl', version: '1.2'
+}
+
+gretty {
+    httpPort = 8081
+    contextPath = '/MyWebApp'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'utf-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'utf-8'
+}
+
+test {
+    systemProperty "file.encoding", "utf-8"
+}
+
+
