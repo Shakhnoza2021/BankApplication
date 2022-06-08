@@ -33,4 +33,9 @@ public class AccountsServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/secure/userView/accounts.jsp");
         rd.forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }

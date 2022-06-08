@@ -2,7 +2,7 @@ package service.bankService;
 
 import model.Card;
 import model.User;
-import service.dbService.DBService;
+import service.dbService.DBConnectService;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,7 +17,7 @@ public class CardsService {
         List<Card> cards = new ArrayList<>();
 
         try {
-            conn = DBService.getConnection();
+            conn = DBConnectService.getConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM cards WHERE user_id = " + user.getId() + ";");
             //System.out.println("rs  " + rs.getInt("id"));
@@ -31,7 +31,7 @@ public class CardsService {
             ex.printStackTrace();
         }
         System.out.println("cards " + cards);
-        DBService.close(conn);
+        DBConnectService.close(conn);
         return cards;
     }
 }

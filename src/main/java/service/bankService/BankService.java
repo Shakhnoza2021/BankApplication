@@ -2,50 +2,55 @@ package service.bankService;
 
 import exception.NotEnoughMoneyException;
 import model.BankAccount;
-import model.Credit;
 import model.User;
-import service.dbService.DBService;
+import model.services.CommunalServices;
+import model.services.Operations;
+import model.services.Service;
+import service.UserService;
+import service.dbService.DBConnectService;
+import service.dbService.DBUpdateService;
+import service.dbService.DBWriteService;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BankService {
     public void transferMoney(User user, String phoneNum){
 
     }
 
-    public void payForCommunalServices() {
-
-    }
-
-    public void payTheFine() {
-
-    }
-
-    public void payForPhoneCommunications(User user, String phoneNum, double sum, BankAccount account) throws NotEnoughMoneyException {
-        if (account.getSum() >= sum) {
-            account.setSum(account.getSum() - sum);
+    public void payForServices(User user, Service service) throws NotEnoughMoneyException {
+        UserService userService = new UserService();
+        System.out.println("user  " + user.toString());
+        System.out.println(service.getAccountNum());
+        BankAccount account = userService.getAccount(user, service.getAccountNum());
+        System.out.println("account sum " + account.getSum());
+        if (account.getSum() >= service.getSum()) {
+            account.setSum(account.getSum() - service.getSum());
+            System.out.println("account sum " + account.getSum());
 
             Connection conn = null;
             try {
-                conn = DBService.getConnection();
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("UPDATE bank_accounts SET account_sum = " + account.getSum() +
-                                                   " WHERE user_id = " + user.getId() +
-                                                   " AND account_num = " + account.getAccountNum() + ";");
+                conn = DBConnectService.getConnection();
+                DBUpdateService.updateAccounts(conn, user, account);
+                DBUpdateService.updateCards(conn, user, account);
 
-                rs = st.executeQuery("UPDATE cards SET card_sum = " + account.getSum() +
-                                         " WHERE user_id = " + user.getId() +
-                                         " AND account_id = " + account.getId() + ";");
                 System.out.println("user id " + user.getId());
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            DBService.close(conn);
+            DBConnectService.close(conn);
         } else throw new NotEnoughMoneyException("Недостаточно денег");
+    }
+
+    public void writeComServ(User user, CommunalServices cs, Operations op) {
+        Connection conn = null;
+
+        try {
+            conn = DBConnectService.getConnection();
+            DBWriteService.writeCommService(conn, user,cs, op);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

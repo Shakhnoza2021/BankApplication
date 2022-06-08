@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DBService {
+public class DBConnectService {
 
     public static Connection getConnection() throws SQLException {
         Connection conn = null;

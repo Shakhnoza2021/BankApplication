@@ -1,5 +1,7 @@
 package model;
 
+import model.services.PhoneCommunication;
+
 import java.util.List;
 
 public class User {

@@ -1,6 +1,7 @@
 package service;
 
-import service.dbService.DBService;
+import model.BankAccount;
+import service.dbService.DBConnectService;
 import model.User;
 
 import javax.servlet.http.HttpSession;
@@ -21,7 +22,7 @@ public class UserService {
         user.setPhoneNum(login);
         user.setPassword(password);
         try {
-            conn = DBService.getConnection();
+            conn = DBConnectService.getConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT id, name, first_name, role FROM users WHERE phone_number = '" + login + "' AND password = '" + password + "'");
 
@@ -35,7 +36,7 @@ public class UserService {
             ex.printStackTrace();
         }
 
-        DBService.close(conn);
+        DBConnectService.close(conn);
         return user;
     }
 
@@ -47,6 +48,16 @@ public class UserService {
         return getUser(login, password).getId();
     }
 
+    public BankAccount getAccount(User user, String number) {
+        BankAccount account = null;
+
+        for (BankAccount acc: user.getAccounts()) {
+            if (acc.getAccountNum().equals(number))
+                account = acc;
+        }
+        return account;
+    }
+
     public void setSessionAttribute(User user, HttpSession session){
         session.setAttribute("userId", user.getId());
         session.setAttribute("name",user.getName());
@@ -55,4 +66,6 @@ public class UserService {
         session.setAttribute("login", user.getPhoneNum());
         session.setAttribute("user", user);
     }
+
+
 }

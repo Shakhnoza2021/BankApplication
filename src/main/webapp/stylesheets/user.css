@@ -83,11 +83,11 @@ hr {
     margin-bottom: 20px;
 }
 
-.options {
-    margin-top: 20px;
+.outerCont .title{
+    margin-bottom: 20px;
 }
 
-.options, .provider, .company, .type {
+.options {
     border: 2px solid #3e8e41;
     width: 350px !important;
     border-radius: 4px;
@@ -119,12 +119,16 @@ input {
     box-sizing: border-box;
 }
 
-#fine, #comServ, #phone {
+.container {
     display: none;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
     width: 350px !important;
+}
+
+#container1, #container11, #container12, #container121, .accContainer {
+    display: none;
 }
 
 .submitBtn:hover {

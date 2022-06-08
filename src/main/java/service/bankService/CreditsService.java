@@ -1,6 +1,6 @@
 package service.bankService;
 
-import service.dbService.DBService;
+import service.dbService.DBConnectService;
 import model.Credit;
 import model.User;
 
@@ -17,7 +17,7 @@ public class CreditsService {
         List<Credit> credits = new ArrayList<>();
 
         try {
-            conn = DBService.getConnection();
+            conn = DBConnectService.getConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM credits WHERE user_id = " + user.getId() + ";");
             //System.out.println("rs  " + rs.getInt("id"));
@@ -31,7 +31,7 @@ public class CreditsService {
             ex.printStackTrace();
         }
         System.out.println("credits " + credits);
-        DBService.close(conn);
+        DBConnectService.close(conn);
         return credits;
     }
 }
