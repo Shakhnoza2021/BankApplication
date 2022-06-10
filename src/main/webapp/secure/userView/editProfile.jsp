@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/stylesheets/user.css'/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value='/stylesheets/table.css'/>" />
     <script type="text/javascript" src="<c:url value='/scripts/checkParams.js'/>"></script>
-    <title>Профиль</title>
+    <title>Редактирование</title>
 </head>
 <body>
 <div class="head">
@@ -35,31 +35,29 @@
         <button class="logoutBtn" type="submit" value="logout"> Выход </button></form>
 </div>
 
-<div class="title">Профиль</div><hr>
+<div class="title">Редактирование</div><hr>
+<form action="saveEdit" method="get">
+    <div class="edit">
+        <div class="title">Фамилия</div>
+        <input id="lastName" name="lastName" type="text" placeholder="${user.lastName}">
 
-<div class="profileInfo">
-    <div class="infoBlock">
-        <div class="left"> Фамилия:</div>
-        <div class="right"> ${user.lastName}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> Имя:</div>
-        <div class="right"> ${user.name}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> Отчество:</div>
-        <div class="right"> ${user.patronymic}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> Телефон:</div>
-        <div class="right"> ${user.phoneNum}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> E-mail:</div>
-        <div class="right"> ${user.email}</div>
-    </div>
-</div>
+        <div class="title">Имя</div>
+        <input id="name" name="name" type="text" placeholder="${user.name}">
 
-<div class="logoutBtn"><a href="editProfile">Редактировать</a></div>
+        <div class="title">Отчество</div>
+        <input id="patronymic" name="patronymic" type="text" placeholder="${user.patronymic}">
+
+        <div class="title">Телефон</div>
+        <input id="phoneNum" name="phoneNum" type="text" placeholder="${user.phoneNum}">
+
+        <div class="title">Email</div>
+        <input id="email" name="email" type="text" placeholder="${user.email}">
+
+        <div class="logoutBtn">
+            <a href="profile">Отмена</a>
+            <input class="submitBtn" type="submit" value="Сохранить">
+        </div>
+    </div>
+</form>
 </body>
 </html>

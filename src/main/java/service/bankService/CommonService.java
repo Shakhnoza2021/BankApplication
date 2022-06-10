@@ -3,6 +3,7 @@ package service.bankService;
 import model.BankAccount;
 import model.Card;
 import model.Credit;
+import model.services.Operations;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,5 +39,14 @@ public class CommonService {
         account.setName((rs.getString("account_name")));
         account.setSum((rs.getDouble("account_sum")));
         account.setAccountNum((rs.getString("account_num")));
+    }
+
+    public static void setFieldsFromResultSet(Operations op, ResultSet rs) throws SQLException {
+        op.setId((rs.getInt("id")));
+        op.setName((rs.getString("op_name")));
+        op.setSum((rs.getDouble("sum")));
+        op.setType((rs.getString("op_type")));
+        //op.setDate((rs.getDate("date")));
+        op.setAccNum((rs.getString("account_num")));
     }
 }

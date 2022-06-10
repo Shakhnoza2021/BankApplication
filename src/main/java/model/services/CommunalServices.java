@@ -3,17 +3,24 @@ package model.services;
 import java.util.Date;
 
 public class CommunalServices implements Service {
+    private int id;
     private String name;
     private String company;
     private String personalAcc;
     private String docNumber;
-    private String accountNum;
     private double sum;
     private String type;
     private Date date;
-    private String operationsId;
 
     public CommunalServices() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -48,15 +55,6 @@ public class CommunalServices implements Service {
         this.docNumber = docNumber;
     }
 
-    @Override
-    public String getAccountNum() {
-        return accountNum;
-    }
-
-    public void setAccountNum(String accountNum) {
-        this.accountNum = accountNum;
-    }
-
     public double getSum() {
         return sum;
     }
@@ -79,13 +77,5 @@ public class CommunalServices implements Service {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getOperationsId() {
-        return operationsId;
-    }
-
-    public void setOperationsId(String operationsId) {
-        this.operationsId = operationsId;
     }
 }

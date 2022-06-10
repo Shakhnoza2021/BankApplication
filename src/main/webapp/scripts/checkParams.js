@@ -23,6 +23,6 @@ function compareSum(idInput, str){
     console.log(document.getElementById(idInput).value);
 }
 
-function getSelectedLabel(sel) {
-    document.getElementById("selectedLabel").value = sel.options[sel.selectedIndex].text;
+function getSelectedLabel(selectedType) {
+    document.getElementById('selectedLabel').value = selectedType.options[selectedType.selectedIndex].text;
 }

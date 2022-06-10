@@ -3,16 +3,22 @@ package model.services;
 import java.util.Date;
 
 public class Fine implements Service {
-
+    private  int id;
     private double sum;
     private String docNumber;
     private String company;
-    private String accountNum;
     private String type;
     private Date date;
-    private String operationsId;
 
     public Fine() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getSum() {
@@ -39,14 +45,6 @@ public class Fine implements Service {
         this.company = company;
     }
 
-    public String getAccountNum() {
-        return accountNum;
-    }
-
-    public void setAccountNum(String accountNum) {
-        this.accountNum = accountNum;
-    }
-
     public String getType() {
         return type;
     }
@@ -61,13 +59,5 @@ public class Fine implements Service {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getOperationsId() {
-        return operationsId;
-    }
-
-    public void setOperationsId(String operationsId) {
-        this.operationsId = operationsId;
     }
 }

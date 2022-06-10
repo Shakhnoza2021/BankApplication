@@ -3,15 +3,22 @@ package model.services;
 import java.util.Date;
 
 public class PhoneCommunication implements Service {
+    private int id;
     private String phoneNumber;
     private String provider;
-    private String accountNum;
     private double sum;
     private String type;
     private Date date;
-    private String operationsId;
 
     public PhoneCommunication() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPhoneNumber() {
@@ -28,14 +35,6 @@ public class PhoneCommunication implements Service {
 
     public void setProvider(String provider) {
         this.provider = provider;
-    }
-
-    public String getAccountNum() {
-        return accountNum;
-    }
-
-    public void setAccountNum(String accountNum) {
-        this.accountNum = accountNum;
     }
 
     public double getSum() {
@@ -62,24 +61,14 @@ public class PhoneCommunication implements Service {
         this.date = date;
     }
 
-    public String getOperationsId() {
-        return operationsId;
-    }
-
-    public void setOperationsId(String operationsId) {
-        this.operationsId = operationsId;
-    }
-
     @Override
     public String toString() {
         return "PhoneCommunication{" +
                 "phoneNumber='" + phoneNumber + '\'' +
                 ", provider='" + provider + '\'' +
-                ", accountNum='" + accountNum + '\'' +
                 ", sum=" + sum +
                 ", type='" + type + '\'' +
                 ", date=" + date +
-                ", operationsId='" + operationsId + '\'' +
                 '}';
     }
 }

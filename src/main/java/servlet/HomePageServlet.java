@@ -53,7 +53,7 @@ public class HomePageServlet extends HttpServlet {
 
                 if (userId != 0) {
                     System.out.println("UserID not null");
-                    User user = userService.getUser(login, password);
+                    User user = userService.getUserByPhoneNum(login, password);
                     if (user.getRole().equals("user")) {
                         userService.setSessionAttribute(user, session);
                         System.out.println("redirected to user.jsp");

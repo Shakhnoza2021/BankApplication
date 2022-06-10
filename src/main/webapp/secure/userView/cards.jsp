@@ -6,23 +6,24 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<c:url value='/stylesheets/user.css'/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value='/stylesheets/table.css'/>" />
-    <title>Кредиты</title>
+    <title>Карты</title>
 </head>
 <body>
 <div class="head">
     <a href="<c:url value='/secure/userView/user.jsp'/>" class="logo">НСК Банк</a>
     <div class="topMenu">
         <a class="topMenuBtn" href="<c:url value='/secure/userView/user.jsp'/>">Главная</a>
-        <a class="topMenuBtn" href="<c:url value='/secure/userView/payments.jsp'/>">Платежи и переводы</a>
-        <a class="topMenuBtn" href="<c:url value='/secure/userView/operations.jsp'/>">История</a>
+        <a class="topMenuBtn" href="payments">Платежи</a>
+        <a class="topMenuBtn" href="transferTo">Переводы</a>
+        <a class="topMenuBtn" href="history">История</a>
         <a class="topMenuBtn" href="<c:url value='/secure/userView/catalog.jsp'/>">Все продукты</a>
     </div>
 
     <table class="profileTable">
         <tr class="profileLine">
-            <td><a  href="<c:url value='/secure/userView/profile.jsp'/>"><img class="profileImg" src = "<c:url value='/stylesheets/images/profile.png'/>"></a></td>
-            <td><a href="<c:url value='/secure/userView/profile.jsp'/>" id="userName"><%out.println(request.getSession().getAttribute("name"));%></a></td>
-            <td><a href="<c:url value='/secure/userView/profile.jsp'/>" id="profileTxt"> Профиль</a></td>
+            <td><a  href="profile"><img class="profileImg" src = "<c:url value='/stylesheets/images/profile.png'/>"></a></td>
+            <td><a href="profile" id="userName"><%out.println(request.getSession().getAttribute("name"));%></a></td>
+            <td><a href="profile" id="profileTxt"> Профиль</a></td>
         </tr>
     </table>
     <form class="logoutForm" action="logout" method="get">

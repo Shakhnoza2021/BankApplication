@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="accounts" class="java.util.ArrayList" scope="request"/>
 <jsp:useBean id="operations" class="java.util.ArrayList" scope="request"/>
-<jsp:useBean id="user" class="model.User" scope="request"/>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/stylesheets/user.css'/>" />
     <link rel="stylesheet" type="text/css" href="<c:url value='/stylesheets/table.css'/>" />
     <script type="text/javascript" src="<c:url value='/scripts/checkParams.js'/>"></script>
-    <title>Профиль</title>
+    <title>История операций</title>
 </head>
 <body>
 <div class="head">
@@ -34,32 +33,55 @@
     <form class="logoutForm" action="logout" method="get">
         <button class="logoutBtn" type="submit" value="logout"> Выход </button></form>
 </div>
-
-<div class="title">Профиль</div><hr>
-
-<div class="profileInfo">
-    <div class="infoBlock">
-        <div class="left"> Фамилия:</div>
-        <div class="right"> ${user.lastName}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> Имя:</div>
-        <div class="right"> ${user.name}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> Отчество:</div>
-        <div class="right"> ${user.patronymic}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> Телефон:</div>
-        <div class="right"> ${user.phoneNum}</div>
-    </div>
-    <div class="infoBlock">
-        <div class="left"> E-mail:</div>
-        <div class="right"> ${user.email}</div>
-    </div>
+<div class="title">Счета</div><hr>
+<div class="tableOut">
+    <table class="table">
+        <tr>
+            <th>Наименование</th>
+            <th>Сумма, руб.</th>
+            <th>Номер счета</th>
+        </tr>
+        <c:forEach items="${accounts}" var="account">
+            <tr>
+                <td align="left">${account.name}</td>
+                <td align="left">${account.sum}</td>
+                <td align="left">${account.accountNum}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 
-<div class="logoutBtn"><a href="editProfile">Редактировать</a></div>
+<div class="title">История операций</div>
+<div>
+    <form action="history" method="get">
+        <select id="account" class="options" name="account">
+            <option selected="selected" disabled label="Счёт" value="1">-- Счёт --</option>
+            <c:forEach items="${accounts}" var="account">
+                <option>${account.accountNum}</option>
+            </c:forEach>
+        </select>
+        <input class="submitBtn" type="submit" value="Открыть">
+    </form>
+</div>
+
+<div class="tableOut">
+    <table class="table">
+        <tr>
+            <th>Наименование</th>
+            <th>Тип</th>
+            <th>Сумма, руб.</th>
+            <th>Номер счета</th>
+            <th>Дата</th>
+        </tr>
+        <c:forEach items="${operations}" var="op">
+            <tr>
+                <td align="left">${op.name}</td>
+                <td align="left">${op.type}</td>
+                <td align="left">${op.sum}</td>
+                <td align="left">${op.accNum}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>

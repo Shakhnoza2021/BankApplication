@@ -24,8 +24,7 @@
     <table>
         <tr><td class="menu"><a class="text" href="creditApp">Заявки по кредитам</a> </td></tr>
         <tr><td class="menu"><a class="text" href="cardApp">Заявки на заведение/закрытие банковских карт</a> </td></tr>
-        <tr><td class="menu"><a class="text" href="editUser">Редактировать пользователя</a> </td></tr>
-        <tr><td class="menu"><a class="text" href="<c:url value='/secure/managerView/add.jsp'/>">Добавить пользователя</a> </td></tr>
+        <tr><td class="menu"><a class="text" href="editUser">Редактирование клиентов</a> </td></tr>
     </table>
 
 </div>

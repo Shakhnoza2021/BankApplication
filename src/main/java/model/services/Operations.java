@@ -8,7 +8,10 @@ public class Operations {
     private String type;
     private double sum;
     private Date date;
+    private String cardNum;
     private int userId;
+    private String accNum;
+    private String transfer_id;
 
     public Operations() {
     }
@@ -53,11 +56,35 @@ public class Operations {
         this.date = date;
     }
 
+    public String getCardNum() {
+        return cardNum;
+    }
+
+    public void setCardNum(String accNum) {
+        this.cardNum = accNum;
+    }
+
     public int getUserId() {
         return userId;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getAccNum() {
+        return accNum;
+    }
+
+    public void setAccNum(String accNum) {
+        this.accNum = accNum;
+    }
+
+    public String getTransfer_id() {
+        return transfer_id;
+    }
+
+    public void setTransfer_id(String transfer_id) {
+        this.transfer_id = transfer_id;
     }
 }

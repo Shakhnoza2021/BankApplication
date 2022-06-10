@@ -1,14 +1,15 @@
 package model;
 
-import model.services.PhoneCommunication;
 
 import java.util.List;
 
 public class User {
     private String name;
-    private String firstname;
+    private String lastName;
+    private String patronymic;
     private String password;
     private String phoneNum;
+    private String email;
     private String role;
     private int id;
 
@@ -27,12 +28,20 @@ public class User {
         this.name = name;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
     }
 
     public void setPassword(String password) {
@@ -45,6 +54,14 @@ public class User {
 
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getRole() {
@@ -95,9 +112,10 @@ public class User {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", password='" + password + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", patronymic='" + patronymic + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
+                ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
                 ", id=" + id +
                 '}';

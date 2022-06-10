@@ -1,6 +1,7 @@
 package model.services;
 
 public interface Service {
-    String getAccountNum();
     double getSum();
+    int getId();
+    void setId(int id);
 }

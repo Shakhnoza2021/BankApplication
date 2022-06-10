@@ -1,12 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%--<%response.setContentType("text/html;charset=UTF-8");
-    request.setCharacterEncoding("UTF-8");%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>--%>
 <!DOCTYPE html>
-
-<%--<fmt:requestEncoding value="utf-8"/>--%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -19,10 +14,8 @@
     <div class="outer">
         <div class="middle">
             <div class="inner">
-
                 <div class="login-form">
                     <h2>Вход</h2>
-
                     <div class="form">
                         <input type="text" id="login" name="login" onkeyup="checkParams()" placeholder="Пользователь">
                         <input type="password" id="password" name="password" onkeyup="checkParams()" placeholder="Пароль">
@@ -31,8 +24,6 @@
                             if(login_msg!=null){
                                 System.out.println("login_msg --------- " + login_msg);
                                 out.println("<font color=red size=2px>"+login_msg+"</font>");}
-
-
                         %></div>
                         <button id="send" type="submit" value="login" disabled="disabled"> Авторизация </button>
                     </div>
@@ -46,8 +37,5 @@
         </div>
     </div>
 </form>
-
-
 </body>
 </html>
-<%--out.println(new String(("<font color=red size=2px>"+login_msg+"</font>").getBytes(), "UTF-8"));--%>
